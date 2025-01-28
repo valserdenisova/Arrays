@@ -1,59 +1,62 @@
 package ru.netology.stats;
 
 public class StatsService {
-    int amount;
-    public int getAmountSales(int[] sales) {
-        amount = sales[0] + sales[1] + sales[2] + sales[3] + sales[4] + sales[5] + sales[6] + sales[7] + sales[8] + sales[9] + sales[10] + sales[11];
+
+    public long getAmountSales(long[] sales) {
+        long amount = 0;
+        for (int i = 0; i < sales.length; i++) {
+            amount = amount + sales[i];
+        }
         return amount;
     }
 
-    public int getAverageSales(int [] sales) {
-        int averageSales;
-        averageSales = getAmountSales(sales)/12;
+    public long getAverageSales(long[] sales) {
+        long averageSales;
+        averageSales = getAmountSales(sales) / 12;
         return averageSales;
     }
 
-    public int getMaxDay(int[] sales) {
+    public int getMaxDay(long[] sales) {
         int maxDay = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[maxDay]) {
                 maxDay = i;
             }
         }
-        return maxDay+1;
+        return maxDay + 1;
     }
 
-    public int getMinDay(int[] sales) {
+    public int getMinDay(long[] sales) {
         int minDay = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] <= sales[minDay]) {
                 minDay = i;
             }
         }
-        return minDay+1;
+        return minDay + 1;
     }
 
-    public int getNumberMaxDays(int[] sales){
-        int numberMaxDays = 0;
-        int maxSalesDayWith1 = getMaxDay(sales);
-        int maxSalesDayWithout1 = maxSalesDayWith1-1;
-        for (int i=0; i < sales.length; i++) {
-            if (sales[i] == sales[maxSalesDayWithout1]) {
-                numberMaxDays++;
+    public int getNumUnderAverage(long[] sales) {
+        int numUnderAverage = 0;
+        long averageSales;
+        averageSales = getAverageSales(sales);
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] < averageSales) {
+                numUnderAverage++;
             }
         }
-        return numberMaxDays;
+        return numUnderAverage;
     }
 
-    public int getNumberMinDays(int[] sales){
-        int numberMinDays = 0;
-        int minSalesDayWith1 = getMinDay(sales);
-        int minSalesDayWithout1 = minSalesDayWith1 -1;
-        for (int i=0; i < sales.length; i++) {
-            if (sales[i] == sales[minSalesDayWithout1]) {
-                numberMinDays++;
+    public int getNumOverAverage(long[] sales) {
+        int numOverAverage = 0;
+        long averageSales;
+        averageSales = getAverageSales(sales);
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] > averageSales) {
+                numOverAverage++;
             }
         }
-        return numberMinDays;
+        return numOverAverage;
     }
 }

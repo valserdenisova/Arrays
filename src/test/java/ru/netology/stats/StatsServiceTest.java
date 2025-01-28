@@ -8,9 +8,9 @@ public class StatsServiceTest {
     @Test
     public void shouldGetAmount() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expectedSales = 180;
-        int actualSales = service.getAmountSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expectedSales = 180;
+        long actualSales = service.getAmountSales(sales);
 
         Assertions.assertEquals(expectedSales, actualSales);
     }
@@ -18,9 +18,9 @@ public class StatsServiceTest {
     @Test
     public void shouldGetAverageAmount() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expectedAverage = 15;
-        int actualAverage = service.getAverageSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expectedAverage = 15;
+        long actualAverage = service.getAverageSales(sales);
 
         Assertions.assertEquals(expectedAverage, actualAverage);
     }
@@ -28,7 +28,7 @@ public class StatsServiceTest {
     @Test
     public void shouldGetMaxDay() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expectedMaxDay = 8;
         int actualMaxDay = service.getMaxDay(sales);
 
@@ -38,7 +38,7 @@ public class StatsServiceTest {
     @Test
     public void shouldGetMinDay() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expectedMinDay = 9;
         int actualMinDay = service.getMinDay(sales);
 
@@ -46,22 +46,22 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void shouldGetNumberMaxDays() {
+    public void shouldGetMonUnder() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expectedNumberMaxDays = 2;
-        int actualNumberMaxDays = service.getNumberMaxDays(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expectedMonUnder = 5;
+        int actualMonUnder = service.getNumUnderAverage(sales);
 
-        Assertions.assertEquals(expectedNumberMaxDays, actualNumberMaxDays);
+        Assertions.assertEquals(expectedMonUnder, actualMonUnder);
     }
 
     @Test
-    public void shouldGetNumberMinDays() {
+    public void shouldGetMonOver() {
         StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expectedNumberMinDays = 1;
-        int actualNumberMinDays = service.getNumberMinDays(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expectedMonOver = 5;
+        int actualMonOver = service.getNumOverAverage(sales);
 
-        Assertions.assertEquals(expectedNumberMinDays, actualNumberMinDays);
+        Assertions.assertEquals(expectedMonOver, actualMonOver);
     }
 }
